@@ -20,7 +20,7 @@ API для взаимодействия с фронтендом.
 - Poetry (для управления зависимостями)
 
 ## Установка
-1. Клонируйте репозиторий: https://github.com/kseniya161-max/DRF_technical/pull/2
+1. Клонируйте репозиторий: https://github.com/kseniya161-max/DRF_technical/pull/3
 2. poetry install
 3. poetry shell
 4. Скопируйте файл .env.sample в .env и заполните его необходимыми значениями.
