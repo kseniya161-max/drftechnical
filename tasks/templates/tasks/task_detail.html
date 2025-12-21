@@ -12,7 +12,6 @@
         <p><strong>Описание:</strong> {{ task.description }}</p>
         <p><strong>Статус:</strong> {% if task.completed %} Выполнена {% else %} Не выполнена {% endif %}</p>
         <a href="{% url 'tasks:task_list' %}" class="btn btn-primary">Назад к списку задач</a>
-         <a href="{% url 'tasks:task_update' task.id %}" class="btn btn-primary">Редактировать</a>
     </div>
 </body>
 </html>
