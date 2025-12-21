@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated
@@ -16,21 +16,13 @@ class TaskViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save()
 
-    def perform_update(self, serializer):
-        serializer.save()
-
-
 def task_list(request):
     """Получаем все задачи и передаем в шаблон"""
     tasks = Task.objects.all()
+    if request.method == 'POST':
+        serializer = TaskSerializer(data=request.POST)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('tasks:task_list')
     return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
-
-@api_view(['POST'])
-def create_task(request):
-    """Создание Задачи"""
-    serializer = TaskSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

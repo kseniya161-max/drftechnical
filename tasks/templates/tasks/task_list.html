@@ -8,24 +8,28 @@
 </head>
 <body>
     <div class="container">
-        <h3 class="mt-5">Список Задач</h3>
-        <form method="POST" action="{% url 'tasks:task_create' %}">
+        <h3 class="mt-5 mb-5">Список Задач</h3>
+        <ul class="list-group mt-4">
+            {% for task in tasks %}
+                <li class="list-group-item">
+                    {{ task.header }} - {% if task.completed %} Выполнена {% else %} Не выполнена {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h3 class="mt-5 mb-5">Создание новой задачи</h3>
+        <form method="POST" action="{% url 'tasks:task_list' %}">
             {% csrf_token %}
             <div class="form-group">
-                <label for="header">Task Header</label>
+                <label for="header">Заголовок задачи</label>
                 <input type="text" class="form-control" id="header" name="header" required>
             </div>
             <div class="form-group">
-                <label for="description">Description (optional)</label>
+                <label for="description">Описание (необязательно)</label>
                 <textarea class="form-control" id="description" name="description"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Create Task</button>
+            <button type="submit" class="btn btn-primary">Создать задачу</button>
         </form>
-        <ul class="list-group mt-4">
-            {% for task in tasks %}
-                <li class="list-group-item">{{ task.header }} - {% if task.completed %}Completed{% else %}Not Completed{% endif %}</li>
-            {% endfor %}
-        </ul>
     </div>
 </body>
 </html>
