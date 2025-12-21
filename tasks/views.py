@@ -16,13 +16,23 @@ class TaskViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save()
 
+    def perform_update(self, serializer):
+        serializer.save()
+
 def task_list(request):
     """Получаем все задачи и передаем в шаблон"""
     tasks = Task.objects.all()
     if request.method == 'POST':
-        serializer = TaskSerializer(data=request.POST)
-        if serializer.is_valid():
-            serializer.save()
+        if 'header' in request.POST:  # Проверяем, что это создание задачи
+            serializer = TaskSerializer(data=request.POST)
+            if serializer.is_valid():
+                serializer.save()
+                return redirect('tasks:task_list')
+        elif 'task_id' in request.POST:  # Проверяем, что это изменение статуса задачи
+            task_id = request.POST.get('task_id')
+            task = Task.objects.get(id=task_id)
+            task.completed = not task.completed  # Меняем статус
+            task.save()
             return redirect('tasks:task_list')
-    return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
+    return render(request, 'tasks/task_list.html', {'tasks': tasks})
