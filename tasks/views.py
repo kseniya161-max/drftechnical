@@ -55,3 +55,16 @@ def task_detail(request, task_id):
     """Получаем задачу по ID и передаем в шаблон"""
     task = get_object_or_404(Task, id=task_id)
     return render(request, 'tasks/task_detail.html', {'task': task})
+
+
+def task_update(request, task_id):
+    """Редактирование задачи"""
+    task = get_object_or_404(Task, id=task_id)
+    if request.method == 'POST':
+        serializer = TaskSerializer(task, data=request.POST)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('tasks:task_detail', task_id=task.id)
+    else:
+        serializer = TaskSerializer(task)
+    return render(request, 'tasks/task_update.html', {'form': serializer})
