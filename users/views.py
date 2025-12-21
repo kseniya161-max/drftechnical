@@ -1,3 +1,4 @@
+from django.shortcuts import redirect, render
 from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -23,3 +24,13 @@ class UserCreateAPIView(generics.CreateAPIView):
 class CustomTokenObtainPairView(TokenObtainPairView):
     """Представление для получения токена"""
     pass
+
+
+def registration_view(request):
+    """Представление для регистрации пользователя"""
+    if request.method == 'POST':
+        serializer = UserSerializer(data=request.POST)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('tasks:task_list')
+    return render(request, 'users/registration.html', {})
