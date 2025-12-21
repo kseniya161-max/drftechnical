@@ -13,8 +13,8 @@
             {% for task in tasks %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     {{ task.header }} - {% if task.completed %} Выполнена {% else %} Не выполнена {% endif %}
-                    <a href="{% url 'tasks:task_detail' task.id %}" class="btn btn-info">Просмотр</a>
                     <div class="btn-group ml-2" role="group">
+                    <a href="{% url 'tasks:task_detail' task.id %}" class="btn btn-info">Просмотр</a>
                  <form method="POST" action="{% url 'tasks:task_list' %}" class="ml-2">
                         {% csrf_token %}
                         <input type="hidden" name="task_id" value="{{ task.id }}">
