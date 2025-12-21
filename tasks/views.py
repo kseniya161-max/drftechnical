@@ -23,15 +23,15 @@ def task_list(request):
     """Получаем все задачи и передаем в шаблон"""
     tasks = Task.objects.all()
     if request.method == 'POST':
-        if 'header' in request.POST:  # Проверяем, что это создание задачи
+        if 'header' in request.POST:
             serializer = TaskSerializer(data=request.POST)
             if serializer.is_valid():
                 serializer.save()
                 return redirect('tasks:task_list')
-        elif 'task_id' in request.POST:  # Проверяем, что это изменение статуса задачи
+        elif 'task_id' in request.POST:
             task_id = request.POST.get('task_id')
             task = Task.objects.get(id=task_id)
-            task.completed = not task.completed  # Меняем статус
+            task.completed = not task.completed
             task.save()
             return redirect('tasks:task_list')
 
