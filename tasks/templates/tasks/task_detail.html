@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h3 class="mt-5">Детали задачи: {{ task.header }}</h3>
+        <p><strong>Описание:</strong> {{ task.description }}</p>
+        <p><strong>Статус:</strong> {% if task.completed %} Выполнена {% else %} Не выполнена {% endif %}</p>
+        <a href="{% url 'tasks:task_list' %}" class="btn btn-primary">Назад к списку задач</a>
+    </div>
+</body>
+</html>
