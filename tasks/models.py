@@ -1,7 +1,7 @@
 from django.db import models
 
 class Task(models.Model):
-    """Модель задачи"""
+    """Модель Задачи"""
     header = models.CharField(max_length=150, verbose_name='заголовок')
     description = models.TextField(blank=True, null=True)
     completed = models.BooleanField(default=False)
