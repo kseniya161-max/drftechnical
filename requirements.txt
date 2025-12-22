@@ -3,3 +3,5 @@ psycopg2>=2.9.11,<3.0.0
 python-dotenv>=1.2.1,<2.0.0
 djangorestframework>=3.16.1,<4.0.0
 gunicorn>=23.0.0,<24.0.0
+djangorestframework-simplejwt>=5.5.1
+
