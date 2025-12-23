@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 import os
 load_dotenv()
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+# SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -71,20 +71,45 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 import os
-load_dotenv('.env')
+load_dotenv()
 
 
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": os.getenv("DATABASE_NAME"),
+#         "USER": os.getenv("DATABASE_USER"),
+#         "PASSWORD": os.getenv("DATABASE_PASSWORD"),
+#         "HOST": os.getenv("DATABASE_HOST"),
+#         "PORT": os.getenv("DATABASE_PORT", default="5432"),
+#     }
+# }
+
+# SECRET_KEY="mv!-utydvikt-cis@xx*6i%0+nna+hf^^=-7@=di6!#z+d=hyl"
+SECRET_KEY=[]
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("DATABASE_NAME"),
-        "USER": os.getenv("DATABASE_USER"),
-        "PASSWORD": os.getenv("DATABASE_PASSWORD"),
-        "HOST": os.getenv("DATABASE_HOST"),
-        "PORT": os.getenv("DATABASE_PORT", default="5432"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "drf_7rbn",
+        "USER": "drf_7rbn_user",
+        "PASSWORD": "eYZ2PrX3NDeD8VMDGvycf8tTAeaDWsva",
+        "HOST": "dpg-d558gikhg0os739un45g-a",
+        "PORT": "5432",
     }
 }
+
+
+
+
+# DATABASE_NAME='drftechnical'
+# DATABASE_USER='drftechnical_user'
+# DATABASE_PASSWORD='kaPPDGGf3TRGqf58baA4KNtx4XGJqqqZ'
+# DATABASE_HOST='dpg-d54r5h95pdvs73bogpag-a'
+# DATABASE_PORT=5432
+
+
+DEBUG=True
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
