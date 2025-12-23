@@ -71,7 +71,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 import os
-load_dotenv()
+load_dotenv('.env')
 
 
 
