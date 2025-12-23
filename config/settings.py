@@ -85,17 +85,25 @@ load_dotenv()
 #         "PORT": os.getenv("DATABASE_PORT", default="5432"),
 #     }
 # }
-SECRET_KEY="mv!-utydvikt-cis@xx*6i%0+nna+hf^^=-7@=di6!#z+d=hyl"
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('PGHOST'),
-        'PORT': os.environ.get('PGPORT', '5432'),
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('PGHOST', 'localhost'),
+        'PORT': os.getenv('PGPORT', '5432'),
     }
 }
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG') == 'True'
 
 
 # SECRET_KEY="mv!-utydvikt-cis@xx*6i%0+nna+hf^^=-7@=di6!#z+d=hyl"
