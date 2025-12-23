@@ -87,7 +87,7 @@ load_dotenv()
 # }
 
 # SECRET_KEY="mv!-utydvikt-cis@xx*6i%0+nna+hf^^=-7@=di6!#z+d=hyl"
-SECRET_KEY=[]
+SECRET_KEY="mv!-utydvikt-cis@xx*6i%0+nna+hf^^=-7@=di6!#z+d=hyl"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
