@@ -86,18 +86,29 @@ load_dotenv()
 #     }
 # }
 
-
-SECRET_KEY="mv!-utydvikt-cis@xx*6i%0+nna+hf^^=-7@=di6!#z+d=hyl"
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "drf_7rbn",
-        "USER": "drf_7rbn_user",
-        "PASSWORD": "eYZ2PrX3NDeD8VMDGvycf8tTAeaDWsva",
-        "HOST": "dpg-d558gikhg0os739un45g-a",
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('PGHOST', 'localhost'),
+        'PORT': os.environ.get('PGPORT', '5432'),
     }
 }
+
+
+# SECRET_KEY="mv!-utydvikt-cis@xx*6i%0+nna+hf^^=-7@=di6!#z+d=hyl"
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "drf_7rbn",
+#         "USER": "drf_7rbn_user",
+#         "PASSWORD": "eYZ2PrX3NDeD8VMDGvycf8tTAeaDWsva",
+#         "HOST": "dpg-d558gikhg0os739un45g-a",
+#         "PORT": "5432",
+#     }
+# }
 
 
 
