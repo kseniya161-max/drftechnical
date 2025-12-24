@@ -21,6 +21,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     'drftechnical.onrender.com',
+    'drftechnical-production.up.railway.app'
 ]
 
 
