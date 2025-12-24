@@ -24,7 +24,7 @@ ALLOWED_HOSTS = [
     'drftechnical-production.up.railway.app'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['drftechnical-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://drftechnical-production.up.railway.app']
 
 
 # Application definition
